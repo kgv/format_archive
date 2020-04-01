@@ -1,6 +1,6 @@
 [package]
 name = "format-macro"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 description = "Format procedural macro"
@@ -16,7 +16,7 @@ edition = "2018"
 proc-macro = true
 
 [dependencies]
-format-core = "0.1.2"
+format-core = "0.1.3"
 lazy_static = "1.4.0"
 proc-macro2 = "1.0.10"
 quote = "1.0.3"

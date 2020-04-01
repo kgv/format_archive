@@ -1,6 +1,6 @@
 [package]
 name = "format-core"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 description = "Core format types"
