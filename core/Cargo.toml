@@ -1,0 +1,13 @@
+[package]
+name = "format-core"
+version = "0.1.0"
+authors = ["kgv <kgv@users.noreply.github.com>"]
+license = "MIT OR Apache-2.0"
+description = "Core format types"
+homepage = "https://crates.io/crates/format-core"
+documentation = "https://docs.rs/format-core"
+repository = "https://github.com/kgv/format"
+readme = "README.md"
+keywords = ["format", "help", "lazy", "wrap"]
+categories = ["no-std", "rust-patterns", "value-formatting"]
+edition = "2018"

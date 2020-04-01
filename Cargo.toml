@@ -1,0 +1,21 @@
+[package]
+name = "format"
+version = "0.1.0"
+authors = ["kgv <kgv@users.noreply.github.com>"]
+license = "MIT OR Apache-2.0"
+description = "A utility crate to make it easier to work with the formatter"
+homepage = "https://crates.io/crates/format"
+documentation = "https://docs.rs/format"
+repository = "https://github.com/kgv/format"
+readme = "README.md"
+keywords = ["format", "help", "lazy", "macro", "wrap"]
+categories = ["no-std", "rust-patterns", "value-formatting"]
+edition = "2018"
+
+[dependencies]
+format-core = "0.1.0"
+format-macro = { version = "0.1.0", optional = true }
+
+[features]
+default = ["macro"]
+macro = ["format-macro"]
