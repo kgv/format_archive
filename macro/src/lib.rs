@@ -6,6 +6,7 @@ use proc_macro::TokenStream;
 ///
 /// ```
 /// # #![feature(proc_macro_hygiene)]
+/// # use format_core as format;
 /// # use format_macro::lazy_format;
 /// let a = "a";
 /// lazy_format!(|f| write!(f, "{}", a));
@@ -17,6 +18,7 @@ use proc_macro::TokenStream;
 ///
 /// ```
 /// # #![feature(proc_macro_hygiene)]
+/// # use format_core as format;
 /// # use format_macro::lazy_format;
 /// let a = "a";
 /// lazy_format!("{}", a);
@@ -42,7 +44,10 @@ use proc_macro::TokenStream;
 /// ```
 /// #![feature(proc_macro_hygiene)]
 ///
-/// # use format_macro as format;
+/// # mod format {
+/// #     pub use format_core::*;
+/// #     pub use format_macro::lazy_format;
+/// # }
 /// # use std::format;
 /// use core::fmt::{Debug, Formatter, Result};
 /// use format::lazy_format;
@@ -71,7 +76,10 @@ use proc_macro::TokenStream;
 /// ```
 /// #![feature(proc_macro_hygiene)]
 ///
-/// # use format_macro as format;
+/// # mod format {
+/// #     pub use format_core::*;
+/// #     pub use format_macro::lazy_format;
+/// # }
 /// # use std::format;
 /// use core::fmt::{Debug, Formatter, Result};
 /// use format::lazy_format;

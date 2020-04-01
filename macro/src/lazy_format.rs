@@ -59,7 +59,7 @@ impl ToTokens for Closure {
     fn to_tokens(&self, tokens: &mut TokenStream) {
         let expr_closure = &self.0;
         let closure_tokens = quote! {
-            format_core::Display(#expr_closure)
+            format::Display(#expr_closure)
         };
         closure_tokens.to_tokens(tokens);
     }
@@ -88,7 +88,7 @@ impl ToTokens for Format {
         let comma_token = self.comma_token;
         let args = &self.args;
         let lazy_format_tokens = quote! {
-            format_core::#kind(move |f| -> core::fmt::Result {
+            format::#kind(move |f| -> core::fmt::Result {
                 core::write!(f, #format #comma_token #args)
             })
         };
