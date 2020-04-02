@@ -1,0 +1,11 @@
+language: rust
+
+matrix:
+  include:
+  - rust: stable
+    name: "Linux, stable"
+    script:
+    - cargo build --verbose --no-default-features
+    - cargo test --verbose --no-default-features --tests
+  - rust: nightly
+    name: "Linux, nightly"
