@@ -1,3 +1,4 @@
+#![cfg(feature = "macro")]
 #![feature(proc_macro_hygiene)]
 
 use core::cell::Cell;
@@ -165,83 +166,5 @@ mod format {
         assert_eq!(4, generator.count());
         assert_eq!("(5, 6), (7, 8)", b.to_string(),);
         assert_eq!(8, generator.count());
-    }
-}
-
-mod kind {
-    use format::lazy_format;
-    use format_core::{
-        Binary, Debug, Display, LowerExp, LowerHex, Octal, Pointer, UpperExp, UpperHex,
-    };
-
-    #[test]
-    fn debug() {
-        let _: Debug<_> = lazy_format!("{:?}", 0);
-        let _: Debug<_> = lazy_format!("{:?}{:?}", 0, 1);
-    }
-
-    #[test]
-    fn display() {
-        let _: Display<_> = lazy_format!("");
-        let _: Display<_> = lazy_format!("{}", 0);
-        let _: Display<_> = lazy_format!("{}, {:?}", 0, 1);
-        let _: Display<_> = lazy_format!("{:?}, {}", 0, 1);
-        let _: Display<_> = lazy_format!("{:b}, {:e}", 0, 1);
-    }
-
-    #[test]
-    fn binary() {
-        let _: Binary<_> = lazy_format!("{:?}, {:b}", 0, 1);
-        let _: Binary<_> = lazy_format!("{:b}, {:?}", 0, 1);
-        let _: Binary<_> = lazy_format!("{}, {:b}", 0, 1);
-        let _: Binary<_> = lazy_format!("{:b}, {}", 0, 1);
-    }
-
-    #[test]
-    fn lower_exp() {
-        let _: LowerExp<_> = lazy_format!("{:?}, {:e}", 0, 1);
-        let _: LowerExp<_> = lazy_format!("{:e}, {:?}", 0, 1);
-        let _: LowerExp<_> = lazy_format!("{}, {:e}", 0, 1);
-        let _: LowerExp<_> = lazy_format!("{:e}, {}", 0, 1);
-    }
-
-    #[test]
-    fn lower_hex() {
-        let _: LowerHex<_> = lazy_format!("{:?}, {:x}", 0, 1);
-        let _: LowerHex<_> = lazy_format!("{:x}, {:?}", 0, 1);
-        let _: LowerHex<_> = lazy_format!("{}, {:x}", 0, 1);
-        let _: LowerHex<_> = lazy_format!("{:x}, {}", 0, 1);
-    }
-
-    #[test]
-    fn octal() {
-        let _: Octal<_> = lazy_format!("{:?}, {:o}", 0, 1);
-        let _: Octal<_> = lazy_format!("{:o}, {:?}", 0, 1);
-        let _: Octal<_> = lazy_format!("{}, {:o}", 0, 1);
-        let _: Octal<_> = lazy_format!("{:o}, {}", 0, 1);
-    }
-
-    #[test]
-    fn pointer() {
-        let _: Pointer<_> = lazy_format!("{:?}, {:p}", 0, 1 as *const ());
-        let _: Pointer<_> = lazy_format!("{:p}, {:?}", 0 as *const (), 1);
-        let _: Pointer<_> = lazy_format!("{}, {:p}", 0, 1 as *const ());
-        let _: Pointer<_> = lazy_format!("{:p}, {}", 0 as *const (), 1);
-    }
-
-    #[test]
-    fn upper_exp() {
-        let _: UpperExp<_> = lazy_format!("{:?}, {:E}", 0, 1);
-        let _: UpperExp<_> = lazy_format!("{:E}, {:?}", 0, 1);
-        let _: UpperExp<_> = lazy_format!("{}, {:E}", 0, 1);
-        let _: UpperExp<_> = lazy_format!("{:E}, {}", 0, 1);
-    }
-
-    #[test]
-    fn upper_hex() {
-        let _: UpperHex<_> = lazy_format!("{:?}, {:X}", 0, 1);
-        let _: UpperHex<_> = lazy_format!("{:X}, {:?}", 0, 1);
-        let _: UpperHex<_> = lazy_format!("{}, {:X}", 0, 1);
-        let _: UpperHex<_> = lazy_format!("{:X}, {}", 0, 1);
     }
 }

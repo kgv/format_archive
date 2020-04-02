@@ -2,40 +2,35 @@ use proc_macro::TokenStream;
 
 /// Lazy format macro
 ///
-/// The first form receives closure as the only one argument.
+/// [`lazy_format!`] is syntax sugar of `Display`.
 ///
-/// ```
-/// # #![feature(proc_macro_hygiene)]
-/// # use format_core as format;
-/// # use format_macro::lazy_format;
-/// let a = "a";
-/// lazy_format!(|f| write!(f, "{}", a));
-/// ```
+/// The first form of [`lazy_format!`] receives closure as the only one
+/// argument.
 ///
-/// The second form is syntax sugar of the first form which is a closure with
-/// the only one [`write!`](core::write). Its syntax is identical to the
-/// [`format!`](std::fmt::format) syntax.
-///
-/// ```
-/// # #![feature(proc_macro_hygiene)]
-/// # use format_core as format;
-/// # use format_macro::lazy_format;
-/// let a = "a";
-/// lazy_format!("{}", a);
+/// ```text
+/// lazy_format!(|f| ...);
 /// ```
 ///
-/// The second form inferences the output format.
+/// it expands to:
 ///
-/// Format inference rules:
+/// ```text
+/// Display(move |f| ...);
+/// ```
 ///
-/// - has only [`Debug`](core::fmt::Debug) formats - `Debug`
-/// - has formats of only one kind from: [`Binary`](core::fmt::Binary),
-///   [`LowerExp`](core::fmt::LowerExp), [`LowerHex`](core::fmt::LowerHex),
-///   [`Octal`](core::fmt::Octal), [`Pointer`](core::fmt::Pointer),
-///   [`UpperExp`](core::fmt::UpperExp) or [`UpperHex`](core::fmt::UpperHex) -
-///   `Binary`, `LowerExp`, `LowerHex`, `Octal`, `Pointer`, `UpperExp` or
-///   `UpperHex` respectively
-/// - otherwise - `Display`
+/// The second form of [`lazy_format!`] has a syntax identical to the syntax of
+/// [`format!`](std::fmt::format). See [`fmt`](std::fmt) for more information.
+///
+/// ```text
+/// lazy_format!("...", arg0, arg1, ...);
+/// ```
+/// 
+/// it expands to:
+/// 
+/// ```text
+/// Display(move |f| {
+///     write!(f, "...", arg0, arg1, ...)
+/// });
+/// ```
 ///
 /// # Examples
 ///

@@ -1,7 +1,5 @@
-use lazy_static::lazy_static;
 use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
-use regex::Regex;
 use syn::{
     parse::{Parse, ParseStream},
     parse_macro_input,
@@ -83,12 +81,11 @@ impl Parse for Format {
 
 impl ToTokens for Format {
     fn to_tokens(&self, tokens: &mut TokenStream) {
-        let kind: Kind = self.format.value().as_str().into();
         let format = &self.format;
         let comma_token = self.comma_token;
         let args = &self.args;
         let lazy_format_tokens = quote! {
-            format::#kind(move |f| -> core::fmt::Result {
+            format::Display(move |f| -> core::fmt::Result {
                 core::write!(f, #format #comma_token #args)
             })
         };
@@ -139,73 +136,6 @@ impl ToTokens for Arg {
             Self::Unnamed { value } => {
                 value.to_tokens(tokens);
             }
-        }
-    }
-}
-
-enum Kind {
-    Debug,
-    Display,
-    Binary,
-    LowerExp,
-    LowerHex,
-    Octal,
-    Pointer,
-    UpperExp,
-    UpperHex,
-}
-
-impl From<&str> for Kind {
-    fn from(from: &str) -> Self {
-        lazy_static! {
-            static ref DEBUG: Regex = Regex::new(r#"\{.*:#?.*\?\}"#).unwrap();
-            static ref DISPLAY: Regex = Regex::new(r#"\{\}"#).unwrap();
-            static ref BINARY: Regex = Regex::new(r#"\{.*:#?.*b\}"#).unwrap();
-            static ref LOWER_EXP: Regex = Regex::new(r#"\{.*:#?.*e\}"#).unwrap();
-            static ref LOWER_HEX: Regex = Regex::new(r#"\{.*:#?.*x\}"#).unwrap();
-            static ref OCTAL: Regex = Regex::new(r#"\{.*:#?.*o\}"#).unwrap();
-            static ref POINTER: Regex = Regex::new(r#"\{.*:#?.*p\}"#).unwrap();
-            static ref UPPER_EXP: Regex = Regex::new(r#"\{.*:#?.*E\}"#).unwrap();
-            static ref UPPER_HEX: Regex = Regex::new(r#"\{.*:#?.*X\}"#).unwrap();
-        }
-
-        let debug = DEBUG.is_match(from);
-        let display = DISPLAY.is_match(from);
-        let binary = BINARY.is_match(from);
-        let lower_exp = LOWER_EXP.is_match(from);
-        let lower_hex = LOWER_HEX.is_match(from);
-        let octal = OCTAL.is_match(from);
-        let pointer = POINTER.is_match(from);
-        let upper_exp = UPPER_EXP.is_match(from);
-        let upper_hex = UPPER_HEX.is_match(from);
-        match (
-            debug, display, binary, lower_exp, lower_hex, octal, pointer, upper_exp, upper_hex,
-        ) {
-            (true, false, false, false, false, false, false, false, false) => Self::Debug,
-            (_, _, true, false, false, false, false, false, false) => Self::Binary,
-            (_, _, false, true, false, false, false, false, false) => Self::LowerExp,
-            (_, _, false, false, true, false, false, false, false) => Self::LowerHex,
-            (_, _, false, false, false, true, false, false, false) => Self::Octal,
-            (_, _, false, false, false, false, true, false, false) => Self::Pointer,
-            (_, _, false, false, false, false, false, true, false) => Self::UpperExp,
-            (_, _, false, false, false, false, false, false, true) => Self::UpperHex,
-            (_, _, _, _, _, _, _, _, _) => Self::Display,
-        }
-    }
-}
-
-impl ToTokens for Kind {
-    fn to_tokens(&self, tokens: &mut TokenStream) {
-        match self {
-            Self::Debug => quote!(Debug).to_tokens(tokens),
-            Self::Display => quote!(Display).to_tokens(tokens),
-            Self::Binary => quote!(Binary).to_tokens(tokens),
-            Self::LowerExp => quote!(LowerExp).to_tokens(tokens),
-            Self::LowerHex => quote!(LowerHex).to_tokens(tokens),
-            Self::Octal => quote!(Octal).to_tokens(tokens),
-            Self::Pointer => quote!(Pointer).to_tokens(tokens),
-            Self::UpperExp => quote!(UpperExp).to_tokens(tokens),
-            Self::UpperHex => quote!(UpperHex).to_tokens(tokens),
         }
     }
 }
