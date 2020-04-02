@@ -10,11 +10,11 @@ A utility crate to make it easier to work with the formatter
 
 ## Usage
 
-Add this to your `Cargo.toml`:
+Add dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-format = "0.1"
+format = "0.2"
 ```
 
 and use `lazy_format` macro:
@@ -36,3 +36,34 @@ impl Debug for Foo {
     }
 }
 ```
+
+or one of format type:
+
+```rust
+struct Foo(usize);
+
+impl Debug for Foo {
+    fn fmt(&self, f: &mut Formatter) -> Result {
+        let alternate = f.alternate();
+        let bar = LowerHex(|f| {
+            if alternate {
+                write!(f, "{:#x}", self.0)
+            } else {
+                write!(f, "{:x}", self.0)
+            }
+        });
+        f.debug_tuple("Foo")
+            .field(&format_args!("{:x}", bar))
+            .finish()
+    }
+}
+```
+
+## Nightly
+
+**Format** requires nightly channel compiler for compile it with feature "macro".
+
+The following unstable features need to be stabilized before **Format** can
+compile on stable with feature "macro":
+
+- [ ] proc_macro_hygiene ([rust-lang/rust#54727](https://github.com/rust-lang/rust/issues/54727))
