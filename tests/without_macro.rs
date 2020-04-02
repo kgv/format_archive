@@ -29,7 +29,7 @@ fn display() {
 
 #[test]
 fn lower_exp() {
-    let lazy_format = LowerExp(|f| write!(f, "{:#e}", 0123456789));
+    let lazy_format = LowerExp(|f| write!(f, "{:#e}", 0123456789f64));
     assert_eq!("1.23456789e8", format!("{:e}", lazy_format));
     assert_eq!("1.23456789e8", format!("{}", lazy_format));
     assert_eq!("LowerExp(1.23456789e8)", format!("{:?}", lazy_format));
@@ -61,7 +61,8 @@ fn pointer() {
 
 #[test]
 fn upper_exp() {
-    let lazy_format = UpperExp(|f| write!(f, "{:#E}", 0123456789));
+    let lazy_format = UpperExp(|f| write!(f, "{:#E}", 0123456789f64));
+    println!("{:E}", lazy_format);
     assert_eq!("1.23456789E8", format!("{:E}", lazy_format));
     assert_eq!("1.23456789E8", format!("{}", lazy_format));
     assert_eq!("UpperExp(1.23456789E8)", format!("{:?}", lazy_format));

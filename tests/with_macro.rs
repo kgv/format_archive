@@ -1,4 +1,3 @@
-#![cfg(feature = "macro")]
 #![feature(proc_macro_hygiene)]
 
 use core::cell::Cell;
