@@ -13,8 +13,8 @@ use proc_macro::TokenStream;
 /// ```
 ///
 /// The second form is syntax sugar of the first form which is a closure with
-/// the only one [write](std::write) macro. Its syntax is identical to the
-/// [format](std::fmt::format) syntax.
+/// the only one [`write!`](core::write). Its syntax is identical to the
+/// [`format!`](std::fmt::format) syntax.
 ///
 /// ```
 /// # #![feature(proc_macro_hygiene)]
@@ -28,18 +28,18 @@ use proc_macro::TokenStream;
 ///
 /// Format inference rules:
 ///
-/// - has only [Debug](core::fmt::Debug) formats - Debug
-/// - has formats of only one kind from: [Binary](core::fmt::Binary),
-///   [LowerExp](core::fmt::LowerExp), [LowerHex](core::fmt::LowerHex),
-///   [Octal](core::fmt::Octal), [Pointer](core::fmt::Pointer),
-///   [UpperExp](core::fmt::UpperExp) or [UpperHex](core::fmt::UpperHex) -
-///   Binary, LowerExp, LowerHex, Octal, Pointer, UpperExp or UpperHex
-///   respectively
-/// - otherwise - Display
+/// - has only [`Debug`](core::fmt::Debug) formats - `Debug`
+/// - has formats of only one kind from: [`Binary`](core::fmt::Binary),
+///   [`LowerExp`](core::fmt::LowerExp), [`LowerHex`](core::fmt::LowerHex),
+///   [`Octal`](core::fmt::Octal), [`Pointer`](core::fmt::Pointer),
+///   [`UpperExp`](core::fmt::UpperExp) or [`UpperHex`](core::fmt::UpperHex) -
+///   `Binary`, `LowerExp`, `LowerHex`, `Octal`, `Pointer`, `UpperExp` or
+///   `UpperHex` respectively
+/// - otherwise - `Display`
 ///
 /// # Examples
 ///
-/// Nested Debug help struct example
+/// Nested debug help struct
 ///
 /// ```
 /// #![feature(proc_macro_hygiene)]
@@ -71,7 +71,7 @@ use proc_macro::TokenStream;
 /// );
 /// ```
 ///
-/// Control flow example
+/// Control flow
 ///
 /// ```
 /// #![feature(proc_macro_hygiene)]
