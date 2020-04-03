@@ -2,17 +2,11 @@ use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
 use syn::{
     parse::{Parse, ParseStream},
-    parse_macro_input,
     punctuated::Punctuated,
     Expr, ExprClosure, Ident, LitStr, Result, Token,
 };
 
-pub(super) fn proc_macro(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-    let lazy_format = parse_macro_input!(input as LazyFormat);
-    lazy_format.into_token_stream().into()
-}
-
-enum LazyFormat {
+pub(super) enum LazyFormat {
     Closure(Closure),
     Format(Format),
 }
@@ -45,7 +39,7 @@ impl ToTokens for LazyFormat {
     }
 }
 
-struct Closure(ExprClosure);
+pub(super) struct Closure(ExprClosure);
 
 impl Parse for Closure {
     fn parse(input: ParseStream) -> Result<Self> {
@@ -63,7 +57,7 @@ impl ToTokens for Closure {
     }
 }
 
-struct Format {
+pub(super) struct Format {
     format: LitStr,
     comma_token: Option<Token![,]>,
     args: Punctuated<Arg, Token![,]>,

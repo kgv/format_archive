@@ -1,4 +1,4 @@
-#![feature(proc_macro_hygiene)]
+#![cfg_attr(feature = "nightly", proc_macro_hygiene)]
 
 use core::fmt::{Debug, Formatter, Result};
 use format::lazy_format;

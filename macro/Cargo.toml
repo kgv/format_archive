@@ -16,9 +16,15 @@ edition = "2018"
 proc-macro = true
 
 [dependencies]
+proc-macro-hack = "0.5.15"
 proc-macro2 = "1.0.10"
 quote = "1.0.3"
 syn = { version = "1.0.17", features = ["full"] }
 
 [dev-dependencies]
-format-core = "0.2.1"
+format-core = { path = "core", version = "0.2.1" }
+
+[features]
+default = []
+nightly = ["unstable"]
+unstable = []

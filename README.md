@@ -59,12 +59,3 @@ impl Debug for Foo {
     }
 }
 ```
-
-## Nightly
-
-**Format** requires nightly channel compiler for compile it with feature "macro".
-
-The following unstable features need to be stabilized before **Format** can
-compile on stable with feature "macro":
-
-- [ ] proc_macro_hygiene ([rust-lang/rust#54727](https://github.com/rust-lang/rust/issues/54727))
