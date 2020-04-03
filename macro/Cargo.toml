@@ -1,6 +1,6 @@
 [package]
 name = "format-macro"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 description = "Format procedural macro"
@@ -22,7 +22,7 @@ quote = "1.0.3"
 syn = { version = "1.0.17", features = ["full"] }
 
 [dev-dependencies]
-format-core = { path = "core", version = "0.2.1" }
+format-core = "0.2.2"
 
 [features]
 default = []

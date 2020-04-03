@@ -1,6 +1,6 @@
 [package]
 name = "format"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 description = "A utility crate to make it easier to work with the formatter"
@@ -13,8 +13,8 @@ categories = ["no-std", "rust-patterns", "value-formatting"]
 edition = "2018"
 
 [dependencies]
-format-core = { path = "core", version = "0.2.1" }
-format-macro = { path = "macro", version = "0.2.1", optional = true }
+format-core = "0.2.2"
+format-macro = { version = "0.2.2", optional = true }
 proc-macro-hack = { version = "0.5", optional = true }
 
 [features]
