@@ -4,7 +4,7 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/kgv/format?svg=true)](https://ci.appveyor.com/project/kgv/format)
 [![Crates](https://img.shields.io/crates/v/format.svg)](https://crates.io/crates/format)
 [![Docs](https://docs.rs/format/badge.svg)](https://docs.rs/format)
-![License](https://img.shields.io/crates/l/format)
+[![License](https://img.shields.io/crates/l/format)](#license)
 [![Minimum rustc version](https://img.shields.io/badge/rustc-1.32+-lightgray.svg)](https://github.com/kgv/format#rust-version-requirements)
 
 A utility crate to make it easier to work with the formatter
