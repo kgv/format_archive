@@ -1,6 +1,6 @@
 [package]
 name = "format"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 edition = "2018"
 description = "A utility crate to make it easier to work with the formatter"
@@ -13,8 +13,8 @@ keywords = ["format", "help", "lazy", "macro", "wrap"]
 categories = ["no-std", "rust-patterns", "value-formatting"]
 
 [dependencies]
-format-core = "0.2.2"
-format-macro = { version = "0.2.2", path = "./macro", optional = true }
+format-core = "0.2.3"
+format-macro = { version = "0.2.3", optional = true }
 
 [features]
 default = ["macro"]
