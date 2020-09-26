@@ -2,15 +2,15 @@
 name = "format-macro"
 version = "0.2.2"
 authors = ["kgv <kgv@users.noreply.github.com>"]
-license = "MIT OR Apache-2.0"
+edition = "2018"
 description = "Format procedural macro"
-homepage = "https://crates.io/crates/format-macro"
 documentation = "https://docs.rs/format-macro"
-repository = "https://github.com/kgv/format"
 readme = "README.md"
+homepage = "https://crates.io/crates/format-macro"
+repository = "https://github.com/kgv/format"
+license = "MIT OR Apache-2.0"
 keywords = ["format", "help", "lazy", "macro", "wrap"]
 categories = ["no-std", "rust-patterns", "value-formatting"]
-edition = "2018"
 
 [lib]
 proc-macro = true
