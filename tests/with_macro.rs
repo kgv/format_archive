@@ -1,5 +1,4 @@
 #![cfg(feature = "macro")]
-#![cfg_attr(feature = "nightly", proc_macro_hygiene)]
 
 use core::cell::Cell;
 

@@ -6,8 +6,6 @@
 //! Nested debug help struct:
 //!
 //! ```
-//! # #![cfg_attr(feature = "nightly", proc_macro_hygiene)]
-//!
 //! use core::fmt::{Debug, Formatter, Result};
 //! use format::lazy_format;
 //! use std::format;
@@ -34,8 +32,6 @@
 //! Control flow:
 //!
 //! ```
-//! # #![cfg_attr(feature = "nightly", proc_macro_hygiene)]
-//!
 //! use core::fmt::{Debug, Formatter, Result};
 //! use format::lazy_format;
 //! use std::format;
@@ -65,9 +61,6 @@
 pub use format_core::{
     Binary, Debug, Display, LowerExp, LowerHex, Octal, Pointer, UpperExp, UpperHex,
 };
-#[cfg(all(feature = "macro", not(feature = "nightly")))]
-use proc_macro_hack::proc_macro_hack;
 
 #[cfg(feature = "macro")]
-#[cfg_attr(all(feature = "macro", not(feature = "nightly")), proc_macro_hack)]
 pub use format_macro::lazy_format;

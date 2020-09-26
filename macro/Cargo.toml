@@ -23,8 +23,3 @@ syn = { version = "1.0.17", features = ["full"] }
 
 [dev-dependencies]
 format-core = "0.2.2"
-
-[features]
-default = []
-nightly = ["unstable"]
-unstable = []

@@ -15,10 +15,7 @@ edition = "2018"
 [dependencies]
 format-core = "0.2.2"
 format-macro = { version = "0.2.2", optional = true }
-proc-macro-hack = { version = "0.5", optional = true }
 
 [features]
-default = ["macro", "format-macro", "proc-macro-hack"]
-macro = []
-nightly = ["macro", "format-macro/nightly", "unstable"]
-unstable = []
+default = ["macro"]
+macro = ["format-macro"]

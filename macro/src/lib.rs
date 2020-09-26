@@ -1,6 +1,5 @@
 use self::lazy_format::LazyFormat;
 use proc_macro::TokenStream;
-use proc_macro_hack::proc_macro_hack;
 use quote::ToTokens;
 use syn::parse_macro_input;
 
@@ -33,8 +32,7 @@ use syn::parse_macro_input;
 /// ```ignore
 /// Display(move |f| write!(f, "...", arg0, arg1, ...));
 /// ```
-#[cfg_attr(feature = "nightly", proc_macro)]
-#[cfg_attr(not(feature = "nightly"), proc_macro_hack)]
+#[proc_macro]
 pub fn lazy_format(input: TokenStream) -> TokenStream {
     let lazy_format = parse_macro_input!(input as LazyFormat);
     lazy_format.into_token_stream().into()
