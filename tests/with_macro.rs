@@ -64,11 +64,11 @@ mod closure {
 
     #[test]
     fn r#move() {
-        let a = format!("a");
+        let a = "a".to_string();
         lazy_format!(|f| write!(f, "{}", a));
         assert_eq!("a", a);
 
-        let a = format!("one");
+        let a = "one".to_string();
         lazy_format!(move |f| write!(f, "{}", a));
         // assert_eq!("a", a); // compile time error
     }

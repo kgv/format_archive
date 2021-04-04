@@ -18,6 +18,6 @@ impl Debug for Foo {
 }
 
 fn main() {
-    assert_eq!("Foo(75bcd15)", format!("{:?}", Foo(0123456789)));
-    assert_eq!("Foo(\n    0x75bcd15,\n)", format!("{:#?}", Foo(0123456789)));
+    assert_eq!("Foo(75bcd15)", format!("{:?}", Foo(123456789)));
+    assert_eq!("Foo(\n    0x75bcd15,\n)", format!("{:#?}", Foo(123456789)));
 }
