@@ -1,6 +1,6 @@
 [package]
 name = "format-macro"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["kgv <kgv@users.noreply.github.com>"]
 edition = "2018"
 description = "Format procedural macro"
@@ -16,10 +16,9 @@ categories = ["no-std", "rust-patterns", "value-formatting"]
 proc-macro = true
 
 [dependencies]
-proc-macro-hack = "0.5.18"
-proc-macro2 = "1.0.22"
-quote = "1.0.7"
-syn = { version = "1.0.41", features = ["full"] }
+proc-macro2 = "1.0.26"
+quote = "1.0.9"
+syn = { version = "1.0.68", features = ["full"] }
 
 [dev-dependencies]
-format-core = "0.2.2"
+format-core = { version = "0.2.4", path = "../core" }
