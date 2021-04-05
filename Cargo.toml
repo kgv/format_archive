@@ -18,6 +18,7 @@ format-macro = { version = "0.2.4", path = "macro", optional = true }
 
 [features]
 default = ["macro"]
+ext = []
 macro = ["format-macro"]
 
 [workspace]
